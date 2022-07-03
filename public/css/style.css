@@ -1,17 +1,17 @@
 body {
-    background: linear-gradient(#e66465, #9198e5);
-    height: fit-content;
-    background-repeat: no-repeat;
+    background: linear-gradient(#e66465, #9198e5) !important;
+    height: 100vh;
 }
 
-
-.col-md-8 {
+.col-md-8 , .col-4{
     background-color: hwb(0deg 100% 0% / 9%);
 }
 .btn-add {
     background-color: rgb(50, 205, 128);
 }
-
+ .card-header , .card-body , .card-footer {
+    background: none !important;
+}
 table {
     border-collapse: collapse !important;
     border-radius: 5px;
