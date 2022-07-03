@@ -1,9 +1,10 @@
 body {
     background: linear-gradient(#e66465, #9198e5) !important;
     height: 100vh;
+    direction: rtl;
 }
 
-.col-md-8 , .col-4{
+.col-md-8 , .col-md-5{
     background-color: hwb(0deg 100% 0% / 9%);
 }
 .btn-add {

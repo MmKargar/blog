@@ -9,6 +9,7 @@ use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class ArticleController extends Controller
@@ -25,16 +26,24 @@ class ArticleController extends Controller
         return view('add-edit');
     }
 
-    public function store()
+    public function store(Request $request)
     {
         $validate = Validator::make(request()->all(), [
             'title' => 'required|max:150|min:3',
             'body' => "required|max:2500|min:5",
-            'image' => "required"
+            'image' => 'required|image||dimensions:min_width=100,min_height=100,max_width=1000,max_height=1000'
         ])->validated();
-        Article::create($validate);
+
+        $path = $request->file('image')->store('images', 'public');
+        Article::create([
+            'title' => $request->title,
+            'body' => $request->body,
+            'image' => $path,
+        ]);
         return redirect("posts");
     }
+
+
     public function edit(Request $request, $id)
     {
         $article = Article::findOrFail($id);
@@ -65,9 +74,9 @@ class ArticleController extends Controller
 
     public function show($id)
     {
-        $article =  Article::findOrFail($id); 
-        return view('show' , [
-            'article' => $article 
+        $article =  Article::findOrFail($id);
+        return view('show', [
+            'article' => $article
         ]);
     }
 }

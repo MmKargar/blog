@@ -31,7 +31,7 @@
             <div class="col-8 mx-auto mt-5">
                 @if (isset($requests))
                     <h1 class="mx-5 text-center text-light">ویرایش پست</h1>
-                    <form action="/posts/{{$article->id}}/update" method="POST" class="form p-3 ">
+                    <form action="/posts/{{$article->id}}/update" method="POST" class="form p-3 " enctype="multipart/form-data">
                         @csrf
                         @method('put')
                         <input type="text" class="form-control mt-5 mb-3 p-3" name="title" placeholder="عنوان..."
@@ -46,9 +46,9 @@
                     </form>
                 @else
                     <h1 class="mx-5 text-center text-light">افزودن پست</h1>
-                    <form action="store" method="POST" class="form p-3 ">
+                    <form action="store" method="POST" class="form p-3 " enctype="multipart/form-data">
                         @csrf
-                        <input type="text" class="form-control mt-5 mb-3 p-3" name="title" placeholder="عنوان...">
+                        <input type="text" class="form-control mt-5 mb-3 p-3" name="title" placeholder="عنوان..." >
                         <textarea name="body" id="body" cols="30" rows="10" class="form-control mb-3"
                             placeholder="اینجا بنویسید ..."></textarea>
                         <input type="file" name="image" class="form-control">

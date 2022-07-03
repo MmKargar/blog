@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/fontiran.css">
+    {{-- <link rel="stylesheet" href="/css/fontiran.css"> --}}
 </head>
 
 <body dir="rtl">
@@ -40,18 +40,19 @@
                                     <td>{{ $item->id }}</td>
                                     <td>{{ $item->title }}</td>
                                     <td>
-                                        <img src="{{ $item->image }}" alt="not found" class="img-fluid rounded-top"
-                                            alt="">
+                                        <img src="{{ asset('storage/' . $item->image) }}" alt="not found"
+                                            class="">
                                     </td>
                                     <td class="d-flex justify-content-center">
                                         <form action="posts/{{ $item->id }}/edit" method="GET">
                                             <button class=" mx-1 btn btn-warning" type="submit">ویرایش</button>
                                         </form>
-                                        <form>
-                                            {{-- @csrf
-                                            @method('delete') --}}
-                                            <button class=" mx-1 btn btn-danger btn-delete" data-bs-toggle="modal"
-                                                data-bs-target="#exampleModal" >حذف</button>
+                                        <form action="">
+                                            @csrf
+                                            @method('delete')
+                                            <button class=" mx-1 btn btn-danger btn-delete" {{-- data-bs-toggle="modal" --}}
+                                                {{-- data-bs-target="#exampleModal" --}}
+                                                onclick="showModal({{ $item->id }})">حذف</button>
                                         </form>
                                         <form action="posts/{{ $item->id }}">
                                             <button class=" mx-1 btn btn-primary" type="submit">مشاهده</button>
@@ -85,7 +86,7 @@
                                 <h6>آیا از حذف رکورد اطمینان دارید ؟</h6>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-danger">حذف</button>
+                                <button type="button" class="btn btn-danger" onclick="deletefunc()">حذف</button>
                                 <button type="button" class="btn btn-primary" data-bs-dismiss="modal">بازگشت</button>
                             </div>
                         </div>
@@ -99,6 +100,8 @@
 
 
         <script src="/js/script.js"></script>
+        <script src="jquery-3.6.0.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
             integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous">

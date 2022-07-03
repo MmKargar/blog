@@ -8,13 +8,21 @@ for ( var i = btndelete.length; i--; ) {
 }
 
 
-/* return Axios.post("/posts/{id}/delete", {
-    method: "delete",
-    id: id,
-})
-    .then(r => r.data.categories)
-    .catch(e => {
-        console.log(e);
-    });
+let idDelete = null ;
+async function deletefunc() {
+    return await axios.post("/posts/{id}/delete", {
+        method: "delete",
+        id: idDelete,
+    })
+}
 
- */
+function showModal(id) {
+    idDelete = id ;  
+/*     $('#myModal').modal('toggle') */
+    $('#myModal').modal('show')
+ /*    myModal.modal('show') */
+}
+
+
+    
+

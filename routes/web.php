@@ -15,7 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
 Route::prefix('posts')->group(function () {
     Route::get('/', [ArticleController::class, 'index']);
     Route::get('create', [ArticleController::class, 'create']);
@@ -23,10 +22,8 @@ Route::prefix('posts')->group(function () {
     Route::get('{id}/edit', [ArticleController::class, 'edit']);
     Route::put('{id}/update', [ArticleController::class, 'update']);
     Route::delete('{id}/delete', [ArticleController::class, 'delete']);
-    Route::get('{id}' , [ArticleController::class , 'show']);  
-
+    Route::get('{id}', [ArticleController::class, 'show']);
 });
-/* 
-Route::get('paginate', function() {
-return view('paginate');        
-}) ; */
+
+ 
+
