@@ -1,20 +1,57 @@
 body {
     background: linear-gradient(#e66465, #9198e5) !important;
-    height: 100vh;
     direction: rtl;
+    min-height: 100vh;
 }
 
-.col-md-8 , .col-md-5{
+.col-md-8,
+.col-md-4 {
     background-color: hwb(0deg 100% 0% / 9%);
+    margin-bottom: 50px !important;
+  /*   height: fit-content; */
 }
-.btn-add {
-    background-color: rgb(50, 205, 128);
+.btn-add,
+.btn-back {
+    background-color: rgb(243, 115, 194) !important ;
+    color: white;
 }
- .card-header , .card-body , .card-footer {
+.card-header,
+.card-body,
+.card-footer {
     background: none !important;
 }
 table {
     border-collapse: collapse !important;
     border-radius: 5px;
     overflow: hidden;
+    background: none !important;
+}
+
+.table > :not(caption) > * > * {
+    padding: 0.5rem 0.5rem;
+    background-color: #fdfdfd52;
+    border: none !important;
+}
+
+.img-thumbnail {
+    border: none !important;
+    background-color: rgba(255, 255, 255, 0.321);
+}
+
+.page-link,
+.disabled > .page-link {
+    background-color: rgba(255, 255, 255, 0.321);
+    font-weight: bold;
+}
+.active > .page-link {
+    background-color: rgb(255, 119, 203) !important ;
+}
+
+tr,
+td {
+    background: none !important;
+}
+
+.form-control {
+    background-color: rgba(255, 255, 255, 0.321);
 }

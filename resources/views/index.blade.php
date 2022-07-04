@@ -2,30 +2,28 @@
 <html lang="en">
 
 <head>
-    <title>Title</title>
-    <!-- Required meta tags -->
+    <title>index page</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/style.css">
-    {{-- <link rel="stylesheet" href="/css/fontiran.css"> --}}
+    <link rel="stylesheet" href="/css/fontiran.css">
 </head>
 
-<body dir="rtl">
+<body>
 
     <div class="container-fluid">
-        <div class="row mb-5">
-            <div class="">
-                <h1 class="text-center text-light my-5">بلاگ</h1>
+        <div class="row">
+            <div>
+                <h1 class="text-center text-light mt-5">بلاگ</h1>
             </div>
-            <div class="col-md-8 col-12 mx-auto mb-5 p-4 rounded">
-                <form action="posts/create">
-                    <button class="btn btn-add mx-5" type="submit">افزودن</button>
-                </form>
-                <div class="table-responsive p-4 rounded mb-5">
-                    <table
-                        class="table table-light table-bordered bg-white text-center table-striped table-hover rounded mb-5">
+            <div>
+                <div class="mb-3">
+                    <a href="/posts/create" class="btn btn-add mx-5">افزودن</a>
+                </div>
+                <div class="col-12 col-md-8 table-responsive mx-auto">
+                    <table class="table table-light text-center text-light">
                         <thead>
                             <tr>
                                 <th>شماره کاربر</th>
@@ -34,47 +32,52 @@
                                 <th> عملیات</th>
                             </tr>
                         </thead>
-                        <tbody class="">
+                        <tbody>
                             @foreach ($data as $item)
                                 <tr>
-                                    <td>{{ $item->id }}</td>
-                                    <td>{{ $item->title }}</td>
+                                    <td class="d-flex align-items-baseline justify-content-center pt-1">
+                                        {{ $item->id }}</td>
+                                    <td class="pt-4">{{ $item->title }}</td>
                                     <td>
-                                        <img src="{{ asset('storage/' . $item->image) }}" alt="not found"
-                                            class="">
+                                        <div class="mx-auto col-md-5">
+                                            <img src="{{ asset('storage/' . $item->image) }}" alt="not found"
+                                                class="img-thumbnail rounded ">
+                                        </div>
                                     </td>
-                                    <td class="d-flex justify-content-center">
-                                        <form action="posts/{{ $item->id }}/edit" method="GET">
-                                            <button class=" mx-1 btn btn-warning" type="submit">ویرایش</button>
-                                        </form>
-                                        <form action="">
+                                    <td class="d-flex align-items-baseline justify-content-center pt-4">
+                                        <div>
+                                            <a href="posts/{{ $item->id }}/edit"
+                                                class="btn btn-warning text-light mx-1">ویرایش</a>
+                                        </div>
+
+                                        <form>
                                             @csrf
                                             @method('delete')
-                                            <button class=" mx-1 btn btn-danger btn-delete" {{-- data-bs-toggle="modal" --}}
-                                                {{-- data-bs-target="#exampleModal" --}}
-                                                onclick="showModal({{ $item->id }})">حذف</button>
+                                            <button class="btn btn-danger btn-delete mx-1"
+                                                data-bs-target="#exampleModal"
+                                                onclick="deletefunc({{ $item->id }})">حذف</button>
                                         </form>
-                                        <form action="posts/{{ $item->id }}">
-                                            <button class=" mx-1 btn btn-primary" type="submit">مشاهده</button>
-                                        </form>
+                                        <div>
+                                            <a href="posts/{{ $item->id }}"
+                                                class="btn btn-primary mx-1">مشاهده</a>
+                                        </div>
                                     </td>
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
-                    <div class="d-flex justify-content-center mt-5">
+                    <div class="d-flex justify-content-center my-4">
                         {!! $data->links() !!}
                     </div>
                 </div>
 
                 <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header d-flex justify-content-between">
                                 <div>
-                                    <h3 class="modal-title text-danger text-bold" id="exampleModalLabel">هشدار</h3>
+                                    <h3 class="modal-title text-danger text-bold">هشدار</h3>
                                 </div>
                                 <div>
                                     <button type="button" class=" btn btn-close" data-bs-dismiss="modal"
@@ -86,7 +89,11 @@
                                 <h6>آیا از حذف رکورد اطمینان دارید ؟</h6>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" onclick="deletefunc()">حذف</button>
+                                <form id="confirm-form" method="POST">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" class="btn btn-danger">حذف</button>
+                                </form>
                                 <button type="button" class="btn btn-primary" data-bs-dismiss="modal">بازگشت</button>
                             </div>
                         </div>
@@ -96,11 +103,7 @@
         </div>
 
 
-
-
-
         <script src="/js/script.js"></script>
-        <script src="jquery-3.6.0.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"

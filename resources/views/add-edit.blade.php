@@ -12,12 +12,10 @@
     <link rel="stylesheet" href="/css/fontiran.css">
 </head>
 
-<body dir="rtl">
-
-
+<body>
 
     <div class="container-fluid">
-        <div class="row ">
+        <div class="row">
             @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul class="list-unstyled">
@@ -28,37 +26,37 @@
                 </div>
             @endif
 
-            <div class="col-8 mx-auto mt-5">
+            <div class="col-md-8 col-12 mx-auto mt-4 p-3 rounded">
                 @if (isset($requests))
-                    <h1 class="mx-5 text-center text-light">ویرایش پست</h1>
-                    <form action="/posts/{{$article->id}}/update" method="POST" class="form p-3 " enctype="multipart/form-data">
+                    <h1 class="text-center text-light">ویرایش پست</h1>
+                    <form action="/posts/{{ $article->id }}/update" method="POST" class="form p-3 "
+                        enctype="multipart/form-data">
                         @csrf
                         @method('put')
                         <input type="text" class="form-control mt-5 mb-3 p-3" name="title" placeholder="عنوان..."
                             value="{{ $article->title }}">
                         <textarea name="body" id="body" cols="30" rows="10" class="form-control mb-3"
                             placeholder="اینجا بنویسید ...">{{ $article->body }}</textarea>
+                        <img src="{{ asset('storage/' . $article->image) }}" class="img-fluid rounded mt-3 mb-3"
+                            alt="">
                         <input type="file" name="image" class="form-control">
                         <div class="my-4">
-                            <button class="btn btn-primary btn-lg" type="submit"
-                                value="">ویرایش</button>
+                            <button class="btn btn-primary btn-lg" type="submit" value="">ویرایش</button>
                         </div>
                     </form>
                 @else
-                    <h1 class="mx-5 text-center text-light">افزودن پست</h1>
-                    <form action="store" method="POST" class="form p-3 " enctype="multipart/form-data">
+                    <h1 class="text-center text-light">افزودن پست</h1>
+                    <form action="store" method="POST" class="form " enctype="multipart/form-data">
                         @csrf
-                        <input type="text" class="form-control mt-5 mb-3 p-3" name="title" placeholder="عنوان..." >
+                        <input type="text" class="form-control mt-3 mb-3 p-3" name="title" placeholder="عنوان...">
                         <textarea name="body" id="body" cols="30" rows="10" class="form-control mb-3"
                             placeholder="اینجا بنویسید ..."></textarea>
                         <input type="file" name="image" class="form-control">
-                        <div class="my-4">
+                        <div class="my-3">
                             <button class="btn btn-primary btn-lg" type="submit">افزودن</button>
                         </div>
                     </form>
                 @endif
-
-
             </div>
         </div>
     </div>

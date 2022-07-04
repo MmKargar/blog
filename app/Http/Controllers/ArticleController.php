@@ -53,15 +53,21 @@ class ArticleController extends Controller
         ]);
     }
 
-    public function update($id)
+    public function update(Request $request,  $id)
     {
         $validate = Validator::make(request()->all(), [
             'title' => 'required|max:150|min:3',
             'body' => "required|max:2500|min:5",
-            'image' => "required"
+            'image' => 'required|image||dimensions:min_width=100,min_height=100,max_width=1000,max_height=1000'
         ])->validated();
+
+        $path = $request->file('image')->store('images', 'public');
         $article = Article::findOrFail($id);
-        $article->update($validate);
+        $article->update([
+            'title' => $request->title,
+            'body' => $request->body,
+            'image' => $path
+        ]);
         return redirect('posts');
     }
 

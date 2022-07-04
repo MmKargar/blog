@@ -15,17 +15,21 @@
 <body>
 
     <div class="container-fluid">
-        <div class="row p-3">
+        <div class="row px-3 py-2 mb-1">
             <div class="">
-                <a href="/posts" class="btn btn-info">بازگشت</a>
+                <a href="/posts" class="btn btn-info btn-back mx-4 ">بازگشت</a>
             </div>
-            <div class="col-md-5 col-12 card  mx-auto mt-5 text-light">
+            <div>
+                <h1 class="text-center text-white ">مشاهده پست</h1>
+            </div>
+            <div class="col-md-4  col-12 card mx-auto mt-4 text-light">
                 <div class="card-header m-2">
                     <h3>{{ $article->title }}</h3>
                 </div>
-                <div class="card-body mx-1">
-                    <div class="w-100">
-                        <img src="/image/download (2).jpg" alt="not found" class="w-100 rounded">
+                <div class="card-body">
+                    <div class=" mx-auto">
+                        <img src="{{ asset('storage/' . $article->image) }}" alt="not found"
+                            class="w-100 rounded img-thumbnail img-fluid">
                     </div>
                 </div>
                 <div class="card-footer ">
