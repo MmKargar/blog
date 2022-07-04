@@ -5,7 +5,7 @@ also i used ,html , css , bootstrap and js .
 
 This project consists of three pages and used validation for this page .
 
-## usage  project
+## Usage  
 
 Clone your project
 Go to the folder application using cd command on your cmd or terminal
