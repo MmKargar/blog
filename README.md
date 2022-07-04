@@ -20,9 +20,9 @@ Run php artisan serve
 Go to localhost:8000
 
 ## Requirement
-PHP 7.4.29
-Laravel 8.6.12
-Composer  2.3.7 
+PHP 7.4.29  
+Laravel 8.6.12  
+Composer  2.3.7   
 
 ## Contributing
 Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
