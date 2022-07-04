@@ -1,25 +1,9 @@
 body {
-    background: linear-gradient(#e66465, #9198e5) !important;
     direction: rtl;
+    background: linear-gradient(#e66465, #9198e5) !important;
     min-height: 100vh;
 }
 
-.col-md-8,
-.col-md-4 {
-    background-color: hwb(0deg 100% 0% / 9%);
-    margin-bottom: 50px !important;
-  /*   height: fit-content; */
-}
-.btn-add,
-.btn-back {
-    background-color: rgb(243, 115, 194) !important ;
-    color: white;
-}
-.card-header,
-.card-body,
-.card-footer {
-    background: none !important;
-}
 table {
     border-collapse: collapse !important;
     border-radius: 5px;
@@ -38,6 +22,11 @@ table {
     background-color: rgba(255, 255, 255, 0.321);
 }
 
+tr,
+td {
+    background: none !important;
+}
+
 .page-link,
 .disabled > .page-link {
     background-color: rgba(255, 255, 255, 0.321);
@@ -47,11 +36,24 @@ table {
     background-color: rgb(255, 119, 203) !important ;
 }
 
-tr,
-td {
-    background: none !important;
+.col-md-8,
+.col-md-4 {
+    background-color: hwb(0deg 100% 0% / 9%);
+    margin-bottom: 50px !important;
+}
+
+.btn-add,
+.btn-back {
+    background-color: rgb(243, 115, 194) !important ;
+    color: white;
 }
 
 .form-control {
     background-color: rgba(255, 255, 255, 0.321);
+}
+
+.card-header,
+.card-body,
+.card-footer {
+    background: none !important;
 }

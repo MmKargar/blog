@@ -58,8 +58,7 @@
                                                 onclick="deletefunc({{ $item->id }})">حذف</button>
                                         </form>
                                         <div>
-                                            <a href="posts/{{ $item->id }}"
-                                                class="btn btn-primary mx-1">مشاهده</a>
+                                            <a href="posts/{{ $item->id }}" class="btn btn-primary mx-1">مشاهده</a>
                                         </div>
                                     </td>
                                 </tr>

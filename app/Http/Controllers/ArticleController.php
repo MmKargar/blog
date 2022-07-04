@@ -17,10 +17,13 @@ class ArticleController extends Controller
     public function index()
     {
         return view('index', [
-            "articles" => Article::all(),
-            'data' => Article::paginate(3)
+            /* create a pagination */
+            'data' => Article::paginate(3),
+
+            "articles" => Article::all()
         ]);
     }
+
     public function create()
     {
         return view('add-edit');
@@ -28,13 +31,13 @@ class ArticleController extends Controller
 
     public function store(Request $request)
     {
-        $validate = Validator::make(request()->all(), [
+        Validator::make(request()->all(), [
             'title' => 'required|max:150|min:3',
             'body' => "required|max:2500|min:5",
             'image' => 'required|image||dimensions:min_width=100,min_height=100,max_width=1000,max_height=1000'
         ])->validated();
 
-        $path = $request->file('image')->store('images', 'public');
+        $path = $request->file('image')->store('images', 'public');  /* store images in public */
         Article::create([
             'title' => $request->title,
             'body' => $request->body,
@@ -42,7 +45,6 @@ class ArticleController extends Controller
         ]);
         return redirect("posts");
     }
-
 
     public function edit(Request $request, $id)
     {
@@ -55,19 +57,20 @@ class ArticleController extends Controller
 
     public function update(Request $request,  $id)
     {
-        $validate = Validator::make(request()->all(), [
+        Validator::make(request()->all(), [
             'title' => 'required|max:150|min:3',
             'body' => "required|max:2500|min:5",
             'image' => 'required|image||dimensions:min_width=100,min_height=100,max_width=1000,max_height=1000'
         ])->validated();
 
-        $path = $request->file('image')->store('images', 'public');
+        $path = $request->file('image')->store('images', 'public');  /* store updated images*/
         $article = Article::findOrFail($id);
         $article->update([
             'title' => $request->title,
             'body' => $request->body,
             'image' => $path
         ]);
+
         return redirect('posts');
     }
 

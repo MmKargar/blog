@@ -16,7 +16,7 @@
 
     <div class="container-fluid">
         <div class="row px-3 py-2 mb-1">
-            <div class="">
+            <div>
                 <a href="/posts" class="btn btn-info btn-back mx-4 ">بازگشت</a>
             </div>
             <div>
@@ -27,18 +27,17 @@
                     <h3>{{ $article->title }}</h3>
                 </div>
                 <div class="card-body">
-                    <div class=" mx-auto">
+                    <div class="mx-auto">
                         <img src="{{ asset('storage/' . $article->image) }}" alt="not found"
                             class="w-100 rounded img-thumbnail img-fluid">
                     </div>
                 </div>
-                <div class="card-footer ">
+                <div class="card-footer">
                     <p>{{ $article->body }}</p>
                 </div>
             </div>
         </div>
     </div>
-
 
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"

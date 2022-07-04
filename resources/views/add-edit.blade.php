@@ -26,7 +26,7 @@
                 </div>
             @endif
 
-            <div class="col-md-8 col-12 mx-auto mt-4 p-3 rounded">
+            <div class="col-12 col-md-8 mx-auto mt-4 p-3 rounded">
                 @if (isset($requests))
                     <h1 class="text-center text-light">ویرایش پست</h1>
                     <form action="/posts/{{ $article->id }}/update" method="POST" class="form p-3 "
