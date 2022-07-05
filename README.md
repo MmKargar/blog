@@ -9,7 +9,7 @@ _ `check Database and create it ,  if doesnt exist`
 _ `composer install `
 _ `php artisan key:generate` 
 _` php artisan storage:link`    
-_ `php artisan migrate:fresh `  
+_ `php artisan migrate:fresh --seed `  
 _ `php artisan serve ` 
 
 ## Requirement
