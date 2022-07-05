@@ -7,17 +7,17 @@ This project consists of three pages and used validation for this page .
 
 ## Usage  
 
-Clone your project
-Go to the folder application using cd command on your cmd or terminal
-Run composer install on your cmd or terminal
-Copy .env.example file to .env on the root folder. You can type copy .env.example .env if using command prompt Windows or cp .env.example .env if using terminal, Ubuntu
-Open your .env file and change the database name (DB_DATABASE) to whatever you have, username (DB_USERNAME) and password (DB_PASSWORD) field correspond to your configuration.
-By default, the username is root and you can leave the password field empty. (This is for Xampp)
-By default, the username is root and password is also root. (This is for Lamp)
-Run php artisan key:generate
-Run php artisan migrate
-Run php artisan serve
-Go to localhost:8000
+you can follow the instructions :  
+
+_ `git clone https://github.com/MmKargar/blog.git`      
+_ `cp .env.example .env  `  
+_ `config the .env as your creditionals` 
+_ `check Database and create it ,  if doesnt exist`  
+_ `composer install `
+_ `php artisan key:generate` 
+_` php artisan storage:link`    
+_ `php artisan migrate:fresh `  
+_ `php artisan run serve ` 
 
 ## Requirement
 PHP 7.4.29  
