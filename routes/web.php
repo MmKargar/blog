@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', function () {
+    return redirect('posts');
+});
 Route::prefix('posts')->group(function () {
     Route::get('/', [ArticleController::class, 'index']);
     Route::get('create', [ArticleController::class, 'create']);

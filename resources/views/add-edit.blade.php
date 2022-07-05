@@ -37,8 +37,10 @@
                             value="{{ $article->title }}">
                         <textarea name="body" id="body" cols="30" rows="10" class="form-control mb-3"
                             placeholder="اینجا بنویسید ...">{{ $article->body }}</textarea>
-                        <img src="{{ asset('storage/' . $article->image) }}" class="img-fluid rounded mt-3 mb-3"
-                            alt="">
+                        <div class="image-style mb-3">
+                            <img src="{{ asset('storage/' . $article->image) }}"
+                                class=" rounded w-100 mb-3 img-fluid" alt="">
+                        </div>
                         <input type="file" name="image" class="form-control">
                         <div class="my-4">
                             <button class="btn btn-primary btn-lg" type="submit" value="">ویرایش</button>
@@ -46,12 +48,13 @@
                     </form>
                 @else
                     <h1 class="text-center text-light">افزودن پست</h1>
-                    <form action="store" method="POST" class="form " enctype="multipart/form-data">
+                    <form action="store" method="POST" class="form" enctype="multipart/form-data">
                         @csrf
-                        <input type="text" class="form-control mt-3 mb-3 p-3" name="title" placeholder="عنوان...">
+                        <input type="text" class="form-control mt-3 mb-3 p-3" value="{{ old('title') }}"
+                            name="title" placeholder="عنوان...">
                         <textarea name="body" id="body" cols="30" rows="10" class="form-control mb-3"
-                            placeholder="اینجا بنویسید ..."></textarea>
-                        <input type="file" name="image" class="form-control">
+                            placeholder="اینجا بنویسید ...">{{ old('body') }}</textarea>
+                        <input type="file" name="image" class="form-control" value="{{ old('image') }}">
                         <div class="my-3">
                             <button class="btn btn-primary btn-lg" type="submit">افزودن</button>
                         </div>

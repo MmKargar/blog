@@ -16,11 +16,11 @@
     <div class="container-fluid">
         <div class="row">
             <div>
-                <h1 class="text-center text-light mt-5">بلاگ</h1>
+                <h1 class="text-center text-light mt-3">بلاگ</h1>
             </div>
-            <div>
-                <div class="mb-3">
-                    <a href="/posts/create" class="btn btn-add mx-5">افزودن</a>
+            <div class="mt-3">
+                <div class="mb-3 box-add">
+                    <a href="/posts/create" class="btn btn-add">افزودن</a>
                 </div>
                 <div class="col-12 col-md-8 table-responsive mx-auto">
                     <table class="table table-light text-center text-light">
@@ -39,9 +39,9 @@
                                         {{ $item->id }}</td>
                                     <td class="pt-4">{{ $item->title }}</td>
                                     <td>
-                                        <div class="mx-auto col-md-5">
+                                        <div class="image-style mx-auto">
                                             <img src="{{ asset('storage/' . $item->image) }}" alt="not found"
-                                                class="img-thumbnail rounded ">
+                                                class="rounded w-100 mb-3 img-fluid">
                                         </div>
                                     </td>
                                     <td class="d-flex align-items-baseline justify-content-center pt-4">
