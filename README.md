@@ -1,10 +1,3 @@
-## About Blog
-
-Hi everybody, i Created a Blog that this is a little project with Laravel.
-also i used ,html , css , bootstrap and js .
-
-This project consists of three pages and used validation for this page .
-
 ## Usage  
 
 you can follow the instructions :  
@@ -22,7 +15,5 @@ _ `php artisan run serve `
 ## Requirement
 PHP 7.4.29  
 Laravel 8.6.12  
-Composer  2.3.7   
+Composer  2.3.7    
        
-
-Thank you for your attention
