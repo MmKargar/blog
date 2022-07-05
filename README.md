@@ -15,5 +15,5 @@ _ php artisan run serve
 ## Requirement
 PHP 7.4.29  
 Laravel 8.6.12  
-Composer  2.3.7   
+Composer  2.3.7    
        
