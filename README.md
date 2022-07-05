@@ -10,7 +10,7 @@ _ `composer install `
 _ `php artisan key:generate` 
 _` php artisan storage:link`    
 _ `php artisan migrate:fresh `  
-_ `php artisan run serve ` 
+_ `php artisan serve ` 
 
 ## Requirement
 PHP 7.4.29  
