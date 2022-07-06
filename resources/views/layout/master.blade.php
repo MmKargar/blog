@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Title</title>
+    <title>@yield('title')</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -16,20 +16,11 @@
 <body>
 
 
-    <header>
-        <p>this is my header</p>
-    </header>
-    <div id="main">
-       
+    <div>
+        @yield('content')
     </div>
-    <footer>
-        <p>this is my footer</p>
-    </footer>
 
-
-
-
-
+     
     <script src="/js/script.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

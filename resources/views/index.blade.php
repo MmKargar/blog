@@ -1,18 +1,10 @@
-<!doctype html>
-<html lang="en">
+@extends('layout.master')
 
-<head>
-    <title>index page</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
-        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/fontiran.css">
-</head>
+{{-- set title page --}}
+@section('title', 'index page')
 
-<body>
-
+{{-- content of index page --}}
+@section('content')
     <div class="container-fluid">
         <div class="row">
             <div>
@@ -34,6 +26,7 @@
                         </thead>
                         <tbody>
                             @foreach ($data as $item)
+                                {{-- show data --}}
                                 <tr>
                                     <td class="d-flex align-items-baseline justify-content-center pt-1">
                                         {{ $item->id }}</td>
@@ -53,8 +46,7 @@
                                         <form>
                                             @csrf
                                             @method('delete')
-                                            <button class="btn btn-danger btn-delete mx-1"
-                                                data-bs-target="#exampleModal"
+                                            <button class="btn btn-danger btn-delete mx-1" data-bs-target="#exampleModal"
                                                 onclick="deletefunc({{ $item->id }})">حذف</button>
                                         </form>
                                         <div>
@@ -66,6 +58,8 @@
                         </tbody>
                     </table>
                     <div class="d-flex justify-content-center my-4">
+
+                        {{-- display Laravel pagination --}}
                         {!! $data->links() !!}
                     </div>
                 </div>
@@ -79,6 +73,8 @@
                                     <h3 class="modal-title text-danger text-bold">هشدار</h3>
                                 </div>
                                 <div>
+
+                                    {{-- display a modal when you click on this btn --}}
                                     <button type="button" class=" btn btn-close" data-bs-dismiss="modal"
                                         aria-label="Close">
                                     </button>
@@ -91,8 +87,12 @@
                                 <form id="confirm-form" method="POST">
                                     @csrf
                                     @method('delete')
+
+                                    {{-- delete data when click on this btn --}}
                                     <button type="submit" class="btn btn-danger">حذف</button>
                                 </form>
+
+                                {{-- Cancel the delete operation --}}
                                 <button type="button" class="btn btn-primary" data-bs-dismiss="modal">بازگشت</button>
                             </div>
                         </div>
@@ -100,17 +100,5 @@
                 </div>
             </div>
         </div>
-
-
-        <script src="/js/script.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
-            integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous">
-        </script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
-            integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous">
-        </script>
-</body>
-
-</html>
+    </div>
+@endsection

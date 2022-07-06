@@ -1,24 +1,14 @@
-<!doctype html>
-<html lang="en">
+@extends('layout.master')
 
-<head>
-    <title>Title</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
-        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/fontiran.css">
-</head>
+{{-- set title page --}}
+@section('title', 'edit-add page')
 
-<body>
-
-
-
+{{-- content of edit-add page --}}
+@section('content')
 
     <div class="container-fluid">
         <div class="row">
+            {{-- show errors --}}
             @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul class="list-unstyled">
@@ -29,8 +19,9 @@
                 </div>
             @endif
 
-
             <div class="col-12 col-md-8 mx-auto mt-4 p-3 rounded">
+
+                {{-- you can add or edit data in table--}}
                 <h1 class="text-center text-light">
                     {{ $route == 'create' ? 'افزودن پست' : 'ویرایش پست' }}</h1>
                 <form action="{{ $route == 'create' ? 'store' : "/posts/$article->id/update" }}" method="POST"
@@ -57,19 +48,4 @@
         </div>
     </div>
 
-
-
-
-
-
-
-
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
-        integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
-        integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous">
-    </script>
-</body>
-
-</html>
+@endsection

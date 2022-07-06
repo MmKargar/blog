@@ -19,6 +19,7 @@ class ArticleController extends Controller
         return view('index', [
             /* create a pagination */
             'data' => Article::paginate(3),
+
             /* get data from table articles */
             "articles" => Article::all()
         ]);
@@ -28,7 +29,7 @@ class ArticleController extends Controller
     {
         $route = request()->route()->getName();
         return view(
-            'add-edit',
+            'edit-add',
             [
                 'route' => $route
             ]
@@ -53,6 +54,7 @@ class ArticleController extends Controller
             'body' => $request->body,
             'image' => $path,
         ]);
+
         return redirect("posts");
     }
 
@@ -61,7 +63,7 @@ class ArticleController extends Controller
         /* check id exists or not */
         $article = Article::findOrFail($id);
         $route = request()->route()->getName();
-        return view('add-edit', [
+        return view('edit-add', [
             'article' => $article,
             'route' => $route
         ]);
@@ -87,7 +89,8 @@ class ArticleController extends Controller
 
             ]);
         } else {
-            /*  image doesent update */
+
+            /*  image doesnt update */
             $article->update([
                 'title' => $request->title,
                 'body' => $request->body,
