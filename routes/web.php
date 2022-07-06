@@ -19,10 +19,10 @@ Route::get('/', function () {
     return redirect('posts');
 });
 Route::prefix('posts')->group(function () {
-    Route::get('/', [ArticleController::class, 'index']);
-    Route::get('create', [ArticleController::class, 'create']);
-    Route::get('{id}', [ArticleController::class, 'show']);
-    Route::get('{id}/edit', [ArticleController::class, 'edit']);
+    Route::get('/', [ArticleController::class, 'index'])->name('index');
+    Route::get('create', [ArticleController::class, 'create'])->name('create');
+    Route::get('{id}', [ArticleController::class, 'show'])->name('show');
+    Route::get('{id}/edit', [ArticleController::class, 'edit'])->name('edit');
     Route::post('store', [ArticleController::class, 'store']);
     Route::put('{id}/update', [ArticleController::class, 'update']);
     Route::delete('{id}/delete', [ArticleController::class, 'delete']);

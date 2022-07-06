@@ -13,7 +13,6 @@ class ArticleSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
-       
+    {    
     }
 }

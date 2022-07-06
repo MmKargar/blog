@@ -26,7 +26,13 @@ class ArticleController extends Controller
 
     public function create()
     {
-        return view('add-edit');
+        $route = request()->route()->getName();
+        return view(
+            'add-edit',
+            [
+                'route' => $route
+            ]
+        );
     }
 
     public function store(Request $request)
@@ -38,7 +44,7 @@ class ArticleController extends Controller
             'image' => 'required|image'
         ])->validated();
 
-        /* apload all images in storage/images*/
+        /* upload all images in storage/images*/
         $path = $request->file('image')->store('images', 'public');
 
         /* insert data to table */
@@ -50,14 +56,14 @@ class ArticleController extends Controller
         return redirect("posts");
     }
 
-    public function edit(Request $request, $id)
+    public function edit($id)
     {
         /* check id exists or not */
         $article = Article::findOrFail($id);
+        $route = request()->route()->getName();
         return view('add-edit', [
-            /* send request method to the add_edit view */
-            'requests' => $request->method(),
-            'article' => $article
+            'article' => $article,
+            'route' => $route
         ]);
     }
 
@@ -69,18 +75,25 @@ class ArticleController extends Controller
             'body' => "required|max:2500|min:5",
         ])->validated();
 
+        $article = Article::findOrFail($id);
+
         /* if image exists get it and upload image in directory */
         if (isset($request->image)) {
             $path = $request->file('image')->store('images', 'public');
-            $article = Article::findOrFail($id);
+            $article->update([
+                'image' => $path,
+                'title' => $request->title,
+                'body' => $request->body,
 
-            /* update data */
+            ]);
+        } else {
+            /*  image doesent update */
             $article->update([
                 'title' => $request->title,
                 'body' => $request->body,
-                'image' => $path
             ]);
         }
+
         return redirect('posts');
     }
 

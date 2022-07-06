@@ -14,6 +14,9 @@
 
 <body>
 
+
+
+
     <div class="container-fluid">
         <div class="row">
             @if ($errors->any())
@@ -26,40 +29,30 @@
                 </div>
             @endif
 
+
             <div class="col-12 col-md-8 mx-auto mt-4 p-3 rounded">
-                @if (isset($requests))
-                    <h1 class="text-center text-light">ویرایش پست</h1>
-                    <form action="/posts/{{ $article->id }}/update" method="POST" class="form p-3 "
-                        enctype="multipart/form-data">
-                        @csrf
+                <h1 class="text-center text-light">
+                    {{ $route == 'create' ? 'افزودن پست' : 'ویرایش پست' }}</h1>
+                <form action="{{ $route == 'create' ? 'store' : "/posts/$article->id/update" }}" method="POST"
+                    class="form p-3 " enctype="multipart/form-data">
+                    @csrf
+                    <input type="text" class="form-control mt-5 mb-3 p-3" name="title" placeholder="عنوان..."
+                        value="{{ $route == 'create' ? old('title') : "$article->title" }}">
+                    <textarea name="body" id="body" cols="30" rows="10" class="form-control mb-3"
+                        placeholder="اینجا بنویسید ...">{{ $route == 'create' ? old('body') : "$article->body" }}</textarea>
+                    @if ($route == 'edit')
                         @method('put')
-                        <input type="text" class="form-control mt-5 mb-3 p-3" name="title" placeholder="عنوان..."
-                            value="{{ $article->title }}">
-                        <textarea name="body" id="body" cols="30" rows="10" class="form-control mb-3"
-                            placeholder="اینجا بنویسید ...">{{ $article->body }}</textarea>
-                        <div class="image-style mb-3">
-                            <img src="{{ asset('storage/' . $article->image) }}"
-                                class=" rounded w-100 mb-3 img-fluid" alt="">
+                        <div class="image-style">
+                            <img src="{{ asset('storage/' . $article->image) }}" class=" rounded w-100 mb-3 img-fluid"
+                                alt="not found">
                         </div>
-                        <input type="file" name="image" class="form-control">
-                        <div class="my-4">
-                            <button class="btn btn-primary btn-lg" type="submit" value="">ویرایش</button>
-                        </div>
-                    </form>
-                @else
-                    <h1 class="text-center text-light">افزودن پست</h1>
-                    <form action="store" method="POST" class="form" enctype="multipart/form-data">
-                        @csrf
-                        <input type="text" class="form-control mt-3 mb-3 p-3" value="{{ old('title') }}"
-                            name="title" placeholder="عنوان...">
-                        <textarea name="body" id="body" cols="30" rows="10" class="form-control mb-3"
-                            placeholder="اینجا بنویسید ...">{{ old('body') }}</textarea>
-                        <input type="file" name="image" class="form-control" value="{{ old('image') }}">
-                        <div class="my-3">
-                            <button class="btn btn-primary btn-lg" type="submit">افزودن</button>
-                        </div>
-                    </form>
-                @endif
+                    @endif
+                    <input type="file" name="image" class="form-control">
+                    <div class="my-4">
+                        <button class="btn btn-primary btn-lg" type="submit"
+                            value="">{{ $route == 'create' ? 'افزودن' : 'ویرایش' }}</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
