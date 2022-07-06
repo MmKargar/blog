@@ -6,9 +6,9 @@ _ `git clone https://github.com/MmKargar/blog.git`
 _ `cp .env.example .env  `  
 _ `config the .env as your creditionals` 
 _ `check Database and create it ,  if doesnt exist`  
-_ `composer install `
-_ `php artisan key:generate` 
-_` php artisan storage:link`    
+_ `composer install `  
+_ `php artisan key:generate`   
+_` php artisan storage:link`      
 _ `php artisan migrate:fresh --seed ` 
 _ `php artisan dummy:generate` 
 _ `php artisan serve ` 

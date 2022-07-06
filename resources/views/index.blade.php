@@ -43,13 +43,11 @@
                                             <a href="posts/{{ $item->id }}/edit"
                                                 class="btn btn-warning text-light mx-1">ویرایش</a>
                                         </div>
-
-                                        <form>
-                                            @csrf
-                                            @method('delete')
+                                        <div>
                                             <button class="btn btn-danger btn-delete mx-1" data-bs-target="#exampleModal"
                                                 onclick="deletefunc({{ $item->id }})">حذف</button>
-                                        </form>
+                                        </div>
+
                                         <div>
                                             <a href="posts/{{ $item->id }}" class="btn btn-primary mx-1">مشاهده</a>
                                         </div>
@@ -103,3 +101,5 @@
         </div>
     </div>
 @endsection
+
+@section('script' , '/js/script.js')
