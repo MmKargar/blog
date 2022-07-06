@@ -3,6 +3,7 @@
 use App\Http\Controllers\ArticleController;
 use App\Models\Article;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return redirect('posts');
 });
+
 Route::prefix('posts')->group(function () {
     Route::get('/', [ArticleController::class, 'index'])->name('index');
     Route::get('create', [ArticleController::class, 'create'])->name('create');

@@ -21,7 +21,7 @@
 
             <div class="col-12 col-md-8 mx-auto mt-4 p-3 rounded">
 
-                {{-- you can add or edit data in table--}}
+                {{-- you can add or edit data in table --}}
                 <h1 class="text-center text-light">
                     {{ $route == 'create' ? 'افزودن پست' : 'ویرایش پست' }}</h1>
                 <form action="{{ $route == 'create' ? 'store' : "/posts/$article->id/update" }}" method="POST"

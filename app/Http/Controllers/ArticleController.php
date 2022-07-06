@@ -47,7 +47,6 @@ class ArticleController extends Controller
 
         /* upload all images in storage/images*/
         $path = $request->file('image')->store('images', 'public');
-
         /* insert data to table */
         Article::create([
             'title' => $request->title,

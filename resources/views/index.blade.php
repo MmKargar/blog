@@ -5,6 +5,7 @@
 
 {{-- content of index page --}}
 @section('content')
+
     <div class="container-fluid">
         <div class="row">
             <div>
