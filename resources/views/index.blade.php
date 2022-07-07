@@ -44,8 +44,8 @@
                                                 class="btn btn-warning text-light mx-1">ویرایش</a>
                                         </div>
                                         <div>
-                                            <button class="btn btn-danger btn-delete mx-1" data-bs-target="#exampleModal"
-                                                onclick="deletefunc({{ $item->id }})">حذف</button>
+                                            <button class="btn btn-danger btn-delete mx-1"
+                                                @click=" isActive=true ">حذف</button>
                                         </div>
 
                                         <div>
@@ -62,44 +62,35 @@
                         {!! $data->links() !!}
                     </div>
                 </div>
-
                 <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header d-flex justify-content-between">
-                                <div>
-                                    <h3 class="modal-title text-danger text-bold">هشدار</h3>
-                                </div>
-                                <div>
 
-                                    {{-- display a modal when you click on this btn --}}
-                                    <button type="button" class=" btn btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close">
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="modal-body">
-                                <h6>آیا از حذف رکورد اطمینان دارید ؟</h6>
-                            </div>
-                            <div class="modal-footer">
-                                <form id="confirm-form" method="POST">
-                                    @csrf
-                                    @method('delete')
 
-                                    {{-- delete data when click on this btn --}}
-                                    <button type="submit" class="btn btn-danger">حذف</button>
-                                </form>
-
-                                {{-- Cancel the delete operation --}}
-                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">بازگشت</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
+
+
+
+
+
+    <script src="{{ mix('/js/app.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+    <script>
+        new Vue({
+            el: ".row",
+            data: {
+                isActive: false,
+            },
+            methods: {
+                click() {
+                    this.$modal.show('example-modal')
+                }
+            }
+
+        });
+    </script>
+
 @endsection
 
-@section('script' , '/js/script.js')
+@section('script', '/js/script.js')

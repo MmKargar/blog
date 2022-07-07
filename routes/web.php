@@ -29,3 +29,8 @@ Route::prefix('posts')->group(function () {
     Route::put('{id}/update', [ArticleController::class, 'update']);
     Route::delete('{id}/delete', [ArticleController::class, 'delete']);
 });
+
+
+Route::get('test', function () {
+    return view('test');
+});
